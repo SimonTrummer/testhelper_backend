@@ -62,9 +62,9 @@ const ExamDB = {
         }
     },
 
-    update: async (examId: string, body: ReqBody, p: { new: boolean }) => {
+    update: async (examId: string, updatedExamData: Partial<IExam>, options: { new: boolean }) => {
         try {
-            const exam = await ExamModel.findByIdAndUpdate(examId, updatedExamData, { new: true }).exec();
+            const exam = await ExamModel.findByIdAndUpdate(examId, updatedExamData, options).exec();
             return exam;
         } catch (error) {
             throw new Error(`Error updating exam: ${error}`);
