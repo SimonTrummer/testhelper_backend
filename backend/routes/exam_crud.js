@@ -2,8 +2,9 @@ const express = require('express');
 const ExamDB = require("../db/exam.model.db");
 const router = express.Router();
 
-router.post('/exams', async (req, res) => {
+router.post('/post', async (req, res) => {
     try {
+        console.log("HEllo")
         const newExam = await ExamDB.create(req.body);
         res.status(201).json(newExam);
     } catch (error) {

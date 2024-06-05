@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { IExam } from "../common/models/IExam";
-import { IMaterial } from "../common/models/IMaterial";
-import { IPDFFile } from "../common/models/IPDF";
+import {IExam} from "../common/models/IExam";
+import {IMaterial} from "../common/models/IMaterial";
+import {IPDFFile} from "../common/models/IPDF";
 
 // Schemas
 const PDFFileSchema = new mongoose.Schema<IPDFFile>({
@@ -37,8 +37,7 @@ const ExamDB = {
         type: string
     }) => {
         try {
-            const exam = await ExamModel.create(examData);
-            return exam;
+            return await ExamModel.create(examData);
         } catch (error) {
             throw new Error(`Error creating exam: ${error}`);
         }
@@ -46,8 +45,7 @@ const ExamDB = {
 
     findById: async (examId: string) => {
         try {
-            const exam = await ExamModel.findById(examId).exec();
-            return exam;
+            return await ExamModel.findById(examId).exec();
         } catch (error) {
             throw new Error(`Error finding exam by ID: ${error}`);
         }
@@ -55,8 +53,7 @@ const ExamDB = {
 
     findAll: async () => {
         try {
-            const exams = await ExamModel.find().exec();
-            return exams;
+            return await ExamModel.find().exec();
         } catch (error) {
             throw new Error(`Error finding all exams: ${error}`);
         }
@@ -64,8 +61,7 @@ const ExamDB = {
 
     update: async (examId: string, updatedExamData: Partial<IExam>, options: { new: boolean }) => {
         try {
-            const exam = await ExamModel.findByIdAndUpdate(examId, updatedExamData, options).exec();
-            return exam;
+            return await ExamModel.findByIdAndUpdate(examId, updatedExamData, options).exec();
         } catch (error) {
             throw new Error(`Error updating exam: ${error}`);
         }
@@ -73,8 +69,7 @@ const ExamDB = {
 
     delete: async (examId: string) => {
         try {
-            const deletedExam = await ExamModel.findByIdAndDelete(examId).exec();
-            return deletedExam;
+            return await ExamModel.findByIdAndDelete(examId).exec();
         } catch (error) {
             throw new Error(`Error deleting exam: ${error}`);
         }
