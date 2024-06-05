@@ -44,4 +44,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const {initMongoConnect} = require("./db/util.model.db")
+initMongoConnect()
+
 module.exports = app;
