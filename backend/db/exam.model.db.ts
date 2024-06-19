@@ -27,6 +27,4 @@ const ExamSchema = new mongoose.Schema<IExam>({
 
 const ExamModel = mongoose.model<IExam>('Exam', ExamSchema);
 
-
-
 export default ExamModel;
